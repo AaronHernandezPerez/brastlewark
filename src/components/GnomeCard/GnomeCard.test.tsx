@@ -1,26 +1,6 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import GnomeCard from '.';
-import { Gnome } from 'types';
-const testGnome: Gnome = {
-  id: 0,
-  name: 'Tobus Quickwhistle',
-  thumbnail:
-    'http://www.publicdomainpictures.net/pictures/10000/nahled/thinking-monkey-11282237747K8xB.jpg',
-  age: 306,
-  weight: 39.065952,
-  height: 107.75835,
-  hair_color: 'Pink',
-  professions: [
-    'Metalworker',
-    'Woodcarver',
-    'Stonecarver',
-    ' Tinker',
-    'Tailor',
-    'Potter',
-  ],
-  friends: ['Cogwitz Chillwidget', 'Tinadette Chillbuster'],
-};
+import { testGnome } from 'utils/tests';
 
 test('Tests it properly displays the name', () => {
   render(<GnomeCard gnome={testGnome} />);

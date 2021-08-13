@@ -32,7 +32,6 @@ const GnomeCard = ({
           scrollPosition={scrollPosition}
           effect="blur"
           width="100%"
-          height="198px"
           src={gnome.thumbnail}
         />
 

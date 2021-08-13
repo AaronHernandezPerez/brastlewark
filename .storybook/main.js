@@ -27,6 +27,8 @@ module.exports = {
       ],
       include: path.resolve(__dirname, '../'),
     })
+    config.resolve.modules.push(process.cwd() + "/src");
+
     return config
   }
 }

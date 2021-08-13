@@ -1,6 +1,5 @@
 .responsive-img {
   background-size: cover;
-  background-position: 50% 0%;
   padding-bottom: 75%;
   overflow: hidden;
   position: relative;
@@ -15,5 +14,5 @@
   left: 0;
   right: 0;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
 }
