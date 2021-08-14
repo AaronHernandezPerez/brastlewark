@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import './NavBar.css';
 
-const NavBar = ({ children }: { children?: ReactElement }) => {
+const NavBar = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className="w-full flex flex-row items-center p-2 px-8 justify-between shadow-xs bg-red-500">
+    <div className="nav-bar w-full flex flex-row items-center p-2 px-8 justify-between shadow-xs bg-red-500">
       <div
         className={`text-xl text-center font-bold text-white sm:flex ${
           children ? 'hidden' : ' '
@@ -11,9 +11,7 @@ const NavBar = ({ children }: { children?: ReactElement }) => {
       >
         <Link to="/">Brastlewark</Link>
       </div>
-      {children && (
-        <div className="w-full sm:w-1/3 h-8 text-sm flex">{children}</div>
-      )}
+      {children && <div className="w-full sm:w-1/3 h-8  flex">{children}</div>}
       <div></div>
     </div>
   );

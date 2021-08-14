@@ -1,43 +1,72 @@
-import NavBar from 'components/NavBar';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+
+import NavBar from 'components/NavBar';
 import { stringColorToHex, textColor } from 'utils/color';
 import { round } from 'utils/math';
-import { testGnome } from 'utils/tests';
+import { GnomeContext } from 'state/GnomeContext';
+import Spinner from 'components/Spinner';
+import ErrorBox from 'components/ErrorBox';
+import './GnomeDetails.css';
+
 interface RouteParams {
   id: string;
 }
 function GnomeDetails() {
   const { id } = useParams<RouteParams>();
 
-  const hexBackground = stringColorToHex(testGnome.hair_color);
-  const color = textColor(hexBackground);
-  return (
-    <div className="h-full flex flex-col">
-      <NavBar />
-      <div className="container mx-auto flex-grow flex justify-center items-center">
-        <div className="flex bg-white  rounded-lg shadow-lg">
-          <div className="flex-none w-24 md:w-48  relative">
+  const {
+    state: { loading, error, gnomes },
+  } = useContext(GnomeContext);
+
+  let body;
+
+  if (loading) {
+    body = <Spinner />;
+  } else if (error) {
+    body = <ErrorBox>{error}</ErrorBox>;
+  } else {
+    const selectedGnome = gnomes.find((g) => g.id.toString() === id);
+
+    if (!selectedGnome) {
+      body = <ErrorBox>Gnome not found 😥</ErrorBox>;
+    } else {
+      const hexBackground = stringColorToHex(selectedGnome.hair_color);
+      const color = textColor(hexBackground);
+      body = (
+        <div className="flex bg-white rounded-lg shadow-lg">
+          <div className="w-24 md:w-48 xl:w-72  relative">
             <img
-              src={testGnome.thumbnail}
-              alt="shopping"
+              src={selectedGnome.thumbnail}
+              alt="Thumbnail"
               className="absolute rounded-lg inset-0 w-full h-full object-cover"
             />
           </div>
-          <div className="flex-auto p-6">
+          <div className="flex-auto p-6 ">
             <h1 className="flex-auto text-2xl font-semibold dark:text-gray-50">
-              {testGnome.name}
+              {selectedGnome.name}
             </h1>
             <div className="mt-2 flex flex-row flex-wrap items-end">
               <h2 className="text-lg mr-2">Age:</h2>
-              <span>{testGnome.age}</span>
+              <span>{selectedGnome.age}</span>
+            </div>
+            <div className="mt-2 flex flex-row flex-wrap items-end">
+              <h2 className="text-lg mr-2">Gender:</h2>
+
+              {selectedGnome.gender === 'male' ? (
+                <i className="fas text-blue-300 mr-1 icon fa-mars"></i>
+              ) : (
+                <i className="fas text-pink-300 mr-1 icon fa-venus"></i>
+              )}
+              <span>{selectedGnome.gender}</span>
             </div>
             <div className="mt-2 flex flex-row flex-wrap items-end">
               <h2 className="text-lg mr-2">Weight:</h2>
-              <span>{round(testGnome.weight)}</span>
+              <span>{round(selectedGnome.weight)}</span>
             </div>
             <div className="mt-2 flex flex-row flex-wrap items-end">
               <h2 className="text-lg mr-2">Height:</h2>
-              <span>{round(testGnome.height)}</span>
+              <span>{round(selectedGnome.height)}</span>
             </div>
             <div className="mt-2 flex flex-row flex-wrap items-end">
               <h2 className="text-lg mr-2">Hair color:</h2>
@@ -45,15 +74,15 @@ function GnomeDetails() {
                 className="px-3 rounded-lg"
                 style={{ background: hexBackground, color }}
               >
-                {testGnome.hair_color}
+                {selectedGnome.hair_color}
               </span>
             </div>
             <div className="mt-2 flex flex-row flex-wrap items-end">
               <h2 className="text-lg mr-2">Professions:</h2>
-              {testGnome.professions.map((p, i) => {
-                const isLast = i === testGnome.professions.length - 1;
+              {selectedGnome.professions.map((p, i) => {
+                const isLast = i === selectedGnome.professions.length - 1;
                 return (
-                  <span className={` ${isLast ? '' : 'mr-1'}`}>
+                  <span key={p} className={` ${isLast ? '' : 'mr-1'}`}>
                     {p}
                     {isLast ? '' : ', '}
                   </span>
@@ -62,19 +91,28 @@ function GnomeDetails() {
             </div>
             <div className="mt-2 flex flex-row flex-wrap items-end">
               <h2 className="text-lg mr-2">Friends:</h2>
-              {testGnome.friends.map((p, i) => {
-                const isLast = i === testGnome.friends.length - 1;
-                return (
-                  <span className={` ${isLast ? '' : 'mr-1'}`}>
-                    {p}
-                    {isLast ? '' : ', '}
-                  </span>
-                );
-              })}
+              {selectedGnome.friends.length > 0
+                ? selectedGnome.friends.map((p, i) => {
+                    const isLast = i === selectedGnome.friends.length - 1;
+                    return (
+                      <span key={p} className={` ${isLast ? '' : 'mr-1'}`}>
+                        {p}
+                        {isLast ? '' : ', '}
+                      </span>
+                    );
+                  })
+                : 'No friends'}
             </div>
           </div>
         </div>
-      </div>
+      );
+    }
+  }
+
+  return (
+    <div className="h-full flex flex-col ">
+      <NavBar />
+      <div className="flex flex-grow justify-center items-center">{body}</div>
     </div>
   );
 }

@@ -13,5 +13,8 @@ const Template: ComponentStory<typeof GnomeFilters> = (args) => (
   </div>
 );
 
+const setProfession = () => {};
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  setProfession,
+};

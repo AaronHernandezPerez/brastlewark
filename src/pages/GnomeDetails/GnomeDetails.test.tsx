@@ -1,22 +1,22 @@
 import axios from 'axios';
 import AxiosMockAdapter from 'axios-mock-adapter';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, MemoryRouter, Route } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 
 import GnomeProvider from 'state/GnomeContext';
 import { getRandomGnomes } from 'utils/tests';
-import GnomeLibrary from '.';
+import GnomeDetails from '.';
 
 const randomGnomes = getRandomGnomes();
 
 jest.mock('components/ScrollObserver', () => () => <div></div>);
 
-describe('GnomeLibrary state', () => {
+describe('GnomeDetails state', () => {
   test('tests initial loading state', () => {
     render(
       <GnomeProvider>
         <Router>
-          <GnomeLibrary />
+          <GnomeDetails />
         </Router>
       </GnomeProvider>
     );
@@ -31,7 +31,7 @@ describe('GnomeLibrary state', () => {
     render(
       <GnomeProvider>
         <Router>
-          <GnomeLibrary />
+          <GnomeDetails />
         </Router>
       </GnomeProvider>
     );
@@ -46,7 +46,7 @@ describe('GnomeLibrary state', () => {
     render(
       <GnomeProvider>
         <Router>
-          <GnomeLibrary />
+          <GnomeDetails />
         </Router>
       </GnomeProvider>
     );
@@ -60,9 +60,11 @@ describe('GnomeLibrary state', () => {
 
     render(
       <GnomeProvider>
-        <Router>
-          <GnomeLibrary />
-        </Router>
+        <MemoryRouter initialEntries={['/gnomes/0']}>
+          <Route path="/gnomes/:id">
+            <GnomeDetails />
+          </Route>
+        </MemoryRouter>
       </GnomeProvider>
     );
     await waitFor(() => screen.getAllByText(randomGnomes[0].name));

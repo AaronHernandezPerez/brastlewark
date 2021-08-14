@@ -1,5 +1,5 @@
 import { LazyLoadImage, ScrollPosition } from 'react-lazy-load-image-component';
-
+import { Link } from 'react-router-dom';
 import { stringColorToHex, textColor, addHexAlpha } from 'utils/color';
 import { Gnome } from 'types';
 import './GnomeCard.css';
@@ -38,13 +38,14 @@ const GnomeCard = ({
         <div className="mt-4 text-center">
           <h1 className="text-xl font-bold">{gnome.name}</h1>
           <p className="mt-2 text-sm">{gnome.professions.join(', ')}</p>
-
-          <button
-            type="button"
-            className={`mt-4 py-1 px-10 rounded-lg bg-black bg-opacity-20 text-white tracking-widest border-2 hover:bg-black hover:bg-opacity-30 will-change-transform transition duration-200`}
-          >
-            Details
-          </button>
+          <Link to={`/gnome/${gnome.id}`}>
+            <button
+              type="button"
+              className={`mt-4 py-1 px-10 rounded-lg bg-black bg-opacity-20 text-white tracking-widest border-2 hover:bg-black hover:bg-opacity-30 will-change-transform transition duration-200`}
+            >
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

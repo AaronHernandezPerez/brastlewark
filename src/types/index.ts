@@ -37,4 +37,5 @@ export type Gnome = {
   hair_color: string;
   professions: Array<Profession>;
   friends: Array<string>;
+  gender: string;
 };

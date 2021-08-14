@@ -19,6 +19,7 @@ export const testGnome: Gnome = {
     'Potter',
   ],
   friends: ['Cogwitz Chillwidget', 'Tinadette Chillbuster'],
+  gender: 'male',
 };
 
 export function getRandomGnomes() {

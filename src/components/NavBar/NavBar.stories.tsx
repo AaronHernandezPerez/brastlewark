@@ -1,3 +1,4 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import NavBar from '.';
@@ -7,7 +8,12 @@ export default {
   component: NavBar,
 } as ComponentMeta<typeof NavBar>;
 
-const Template: ComponentStory<typeof NavBar> = (args) => <NavBar {...args} />;
+const Template: ComponentStory<typeof NavBar> = (args) => (
+  <Router>
+    {' '}
+    <NavBar {...args} />{' '}
+  </Router>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {};

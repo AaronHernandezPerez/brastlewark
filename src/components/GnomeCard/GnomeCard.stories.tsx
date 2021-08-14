@@ -1,3 +1,4 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import GnomeCard from '.';
@@ -9,7 +10,9 @@ export default {
 } as ComponentMeta<typeof GnomeCard>;
 
 const Template: ComponentStory<typeof GnomeCard> = (args) => (
-  <GnomeCard {...args} />
+  <Router>
+    <GnomeCard {...args} />{' '}
+  </Router>
 );
 
 export const Primary = Template.bind({});

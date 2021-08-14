@@ -4,6 +4,7 @@ export function getPageElements(
   maxCollection: number
 ) {
   const numEl = page * perPage;
+
   if (numEl > maxCollection) {
     return maxCollection - 1;
   }
