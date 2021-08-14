@@ -13,11 +13,11 @@ Implemented a Story for all visual components\
 Coverage at 100% in most components
 
 <p align="center" >
-  <img src="documents/library.png" alt="Library" />
+  <img src="documents/library.PNG" alt="Library" />
 </p>
 
 <p align="center" >
-  <img src="documents/details.png" alt="Details" />
+  <img src="documents/details.PNG" alt="Details" />
 </p>
 
 ## High level specifications
@@ -84,5 +84,5 @@ yarn storybook
 ```
 
 <p align="center" >
-  <img src="documents/storybook.png" alt="Storybook" />
+  <img src="documents/storybook.PNG" alt="Storybook" />
 </p>
