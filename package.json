@@ -24,6 +24,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "coverage": "craco test --collect-coverage --watchAll=false",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -66,6 +67,7 @@
     "@types/react-lazy-load-image-component": "^1.5.2",
     "@types/react-router-dom": "^5.1.8",
     "autoprefixer": "^9",
+    "axios-mock-adapter": "^1.20.0",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },

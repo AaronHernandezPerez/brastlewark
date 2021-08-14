@@ -1,6 +1,6 @@
 import { LazyLoadImage, ScrollPosition } from 'react-lazy-load-image-component';
 
-import { stringColorToHex, textColor, adHexAlpha } from 'utils/color';
+import { stringColorToHex, textColor, addHexAlpha } from 'utils/color';
 import { Gnome } from 'types';
 import './GnomeCard.css';
 
@@ -15,7 +15,7 @@ const GnomeCard = ({
 }) => {
   const hexBackground = stringColorToHex(gnome.hair_color);
   const color = textColor(hexBackground);
-  const backgroundColor = adHexAlpha(hexBackground, 0.75);
+  const backgroundColor = addHexAlpha(hexBackground, 0.75);
   return (
     <div
       className={`p-3 w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500 will-change-transform ${className}`}

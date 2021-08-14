@@ -1,3 +1,4 @@
+import { randomColor } from 'utils/color';
 import { Gnome } from 'types';
 
 export const testGnome: Gnome = {
@@ -19,3 +20,13 @@ export const testGnome: Gnome = {
   ],
   friends: ['Cogwitz Chillwidget', 'Tinadette Chillbuster'],
 };
+
+export function getRandomGnomes() {
+  const gnomesArr = [];
+
+  for (let i = 0; i < 40; i++) {
+    gnomesArr.push({ ...testGnome, id: i, hair_color: randomColor() });
+  }
+
+  return gnomesArr;
+}
