@@ -14,10 +14,8 @@ const ScrollObserver = ({
   const loader = useRef<HTMLDivElement>(null);
 
   const handleObserver = useCallback(
-    (entries) => {
-      const target = entries[0];
-      console.log('handleObserver', entries);
-      if (target.isIntersecting) {
+    (entries: IntersectionObserverEntry[]) => {
+      if (entries.find((e) => e.isIntersecting === true)) {
         onIntersect();
       }
     },

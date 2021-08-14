@@ -1,8 +1,7 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '.';
 
-jest.mock('screens/GnomeLibrary', () => () => <div>Gnome library!</div>);
+jest.mock('pages/GnomeLibrary', () => () => <div>Gnome library!</div>);
 
 test('tests the the root component', () => {
   render(<App />);

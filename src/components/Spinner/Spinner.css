@@ -1,0 +1,22 @@
+@-webkit-keyframes spinning {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border-top-color: #dc2626;
+  animation: spinning 1.5s linear infinite;
+}

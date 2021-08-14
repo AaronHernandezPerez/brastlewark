@@ -37,11 +37,11 @@ const GnomeCard = ({
 
         <div className="mt-4 text-center">
           <h1 className="text-xl font-bold">{gnome.name}</h1>
-          {/* <p className="mt-4 text-gray-600">{gnome}</p> */}
+          <p className="mt-2 text-sm">{gnome.professions.join(', ')}</p>
 
           <button
             type="button"
-            className={`mt-4 py-1 px-10 rounded-full bg-black bg-opacity-20 text-white tracking-widest border-2 hover:bg-black hover:bg-opacity-30 will-change-transform transition duration-200`}
+            className={`mt-4 py-1 px-10 rounded-lg bg-black bg-opacity-20 text-white tracking-widest border-2 hover:bg-black hover:bg-opacity-30 will-change-transform transition duration-200`}
           >
             Details
           </button>

@@ -2,14 +2,15 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function useFetch(url: string) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | object | null>(null);
 
   useEffect(() => {
     setLoading(true);
     setData(null);
     setError(null);
+
     const source = axios.CancelToken.source();
     axios
       .get(url, { cancelToken: source.token })
@@ -27,7 +28,7 @@ function useFetch(url: string) {
     };
   }, [url]);
 
-  return { data, loading, error };
+  return { data, loading, error, setError };
 }
 
 export default useFetch;
