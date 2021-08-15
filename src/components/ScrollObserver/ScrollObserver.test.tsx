@@ -23,7 +23,7 @@ describe('ScrollObserver detection', () => {
 
   const callback = jest.fn();
   test('tests onIntersect is called when reaching the component', () => {
-    // We cant really test IntersectionObserver, so this is the next best thing
+    // We cant test IntersectionObserver, so it test the callback works
     render(
       <div data-testid="scroll-parent">
         <div style={{ height: 1000 }}></div>

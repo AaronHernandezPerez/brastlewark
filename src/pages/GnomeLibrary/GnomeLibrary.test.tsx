@@ -3,7 +3,7 @@ import AxiosMockAdapter from 'axios-mock-adapter';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 
-import GnomeProvider from 'state/GnomeContext';
+import GnomeProvider from 'context/GnomeContext';
 import { getRandomGnomes } from 'utils/tests';
 import GnomeLibrary from '.';
 

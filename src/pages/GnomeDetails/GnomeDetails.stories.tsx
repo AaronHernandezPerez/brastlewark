@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 
-import GnomeProvider from 'state/GnomeContext';
+import GnomeProvider from 'context/GnomeContext';
 import GnomeDetails from '.';
 import { getRandomGnomes } from 'utils/tests';
 

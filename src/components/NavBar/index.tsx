@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import './NavBar.css';
+import styles from './NavBar.module.css';
 
 const NavBar = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className="nav-bar w-full flex flex-row items-center p-2 px-8 justify-between shadow-xs bg-red-500">
+    <div
+      className={`${styles.navBar} w-full flex flex-row items-center p-2 px-8 justify-between shadow-xs bg-red-500`}
+    >
       <div
         className={`text-xl text-center font-bold text-white sm:flex ${
           children ? 'hidden' : ' '

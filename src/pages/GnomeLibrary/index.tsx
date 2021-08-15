@@ -10,7 +10,7 @@ import NavBar from 'components/NavBar';
 import GnomeFilters from 'components/GnomeFilters';
 import Spinner from 'components/Spinner';
 import ErrorBox from 'components/ErrorBox';
-import { GnomeContext } from 'state/GnomeContext';
+import { GnomeContext } from 'context/GnomeContext';
 import { getPageElements } from 'utils/libraries';
 import { Gnome, Profession } from 'types';
 
@@ -144,7 +144,9 @@ const GnomeLibrary = ({
           />
         )}
       </NavBar>
-      <div className="flex flex-grow justify-center items-center">{body}</div>
+      <div className="container mx-auto">
+        <div className="flex flex-grow justify-center items-center">{body}</div>
+      </div>
     </div>
   );
 };

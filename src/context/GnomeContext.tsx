@@ -1,4 +1,4 @@
-import { createContext, ReactElement, useReducer, useEffect } from 'react';
+import { createContext, useReducer, useEffect } from 'react';
 
 import { Gnome } from 'types';
 import useFetch from 'api/useFetch';
@@ -65,11 +65,7 @@ export const GnomeContext = createContext<{
   dispatch: () => undefined,
 });
 
-const GnomeProvider = ({
-  children,
-}: {
-  children: ReactElement | ReactElement[];
-}) => {
+const GnomeProvider = ({ children }: { children: React.ReactNode }) => {
   const errorMsg = 'Error retrieving citizens';
   const { data, loading, error } = useFetch(
     'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json'

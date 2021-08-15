@@ -1,5 +1,4 @@
 import { professions } from 'types';
-import './GnomeFilters.css';
 
 const GnomeFilters = ({
   profession,
@@ -9,8 +8,8 @@ const GnomeFilters = ({
   setProfession: Function;
 }) => {
   return (
-    <div className="flex flex-row flex-wrap justify-between items-center">
-      <div className={`font-semibold `}>
+    <div className="flex flex-row flex-wrap justify-between md:justify-start items-center">
+      <div className={`font-semibold md:mr-5`}>
         <i className="fas fa-sliders-h mr-1"></i>
         Filters:
       </div>
